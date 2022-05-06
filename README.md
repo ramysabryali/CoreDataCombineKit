@@ -21,7 +21,7 @@
 
 * **Swift 5.5:** iOS 13.1+ / macOS 10.15+
 
-------------
+<br />
 
 ## Architecture
 All fetching requests execusting on the main thread with the main context, But insert, update and delete requests are executing on a background thread.
@@ -54,7 +54,7 @@ This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombine
 
 <br />
 
-#### Install with Swift Package Manager:
+### Install with Swift Package Manager:
 ```swift
 dependencies: [
     .package(url: "https://github.com/ramyaimansabry/CoreDataCombineKit.git", from: "0.0.1"))
