@@ -23,7 +23,6 @@
 
 <br />
 
-////
 
 ## Setting up
 You need two things:
@@ -96,6 +95,8 @@ func addNewUser() {
     }
 ```
 
+<br />
+
 Fetching all entities:
 
 ```swift
@@ -113,6 +114,7 @@ func fetchAllUsers() {
     }
 ```
 
+<br />
 
 Fetching all entities with sort:
 
@@ -168,6 +170,7 @@ func updateUser() {
     }
 ```
 
+
 Delete an entity:
 
 ```swift
@@ -201,7 +204,7 @@ func deleteAllUsers() {
     }
 ```
 
-////
+
 
 ## Architecture
 All fetching requests execusting on the main thread with the main context, But insert, update and delete requests are executing on a background thread.
