@@ -1,5 +1,5 @@
 <p align="center">
-# Core Data Combine Kit
+Core Data Combine Kit
 
 <img src="Screenshots/logo.png" width="80"> 
 
