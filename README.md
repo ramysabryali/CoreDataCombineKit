@@ -1,7 +1,6 @@
 <div align="center">
 
-<p align="center">
-Core Data Combine Kit
+# Core Data Combine Kit
 
 <img src="Screenshots/logo.png" width="80"> 
 
@@ -14,13 +13,14 @@ A light weight library for manipulating the main Core Data actions with combine 
 
 <a href="https://swift.org/source-compatibility/#current-list-of-projects"><img alt="Swift Package Manager compatible" src="https://img.shields.io/badge/Swift_Package_Manager-compatible-orange.svg?style=flat" /></a>
 
-* **Swift 5.5:** iOS 13.1+ / macOS 10.15+
-
 
 <br />
 
-
 </div>
+
+
+* **Swift 5.5:** iOS 13.1+ / macOS 10.15+
+
     
 ## Authors
 
