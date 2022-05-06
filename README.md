@@ -245,6 +245,7 @@ if you are using Macbook M1, maybe you will face an error while executing the pr
 ```sh
 sudo arch -x86_64 gem install ffi
 arch -x86_64 pod install
+```
 
 This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombineKit` in your swift file to use the library.
 
