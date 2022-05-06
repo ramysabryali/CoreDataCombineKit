@@ -122,6 +122,39 @@ class ViewController: UIViewController {
             }
             .store(in: &cancellables)
     }
+    
+    @IBAction func deleteFirstUser(_ sender: UIButton) {
+        guard let firstUser: User = users.first else { return }
+        
+        usersRepo?.delete(firstUser)
+            .sink(receiveCompletion: { completion in
+                guard case .failure(let error) = completion else { return }
+                print(error.localizedDescription)
+                
+            }, receiveValue: { [weak self] _ in
+                guard let self = self else { return }
+                self.users.remove(at: 0)
+            })
+            .store(in: &cancellables)
+    }
+    
+    @IBAction func updateFirstUser(_ sender: UIButton) {
+        guard let firstUser: User = users.first else { return }
+        
+        firstUser.name = String.random(length: 2)
+        
+        usersRepo?.update(firstUser)
+            .sink(receiveCompletion: { completion in
+                guard case .failure(let error) = completion else { return }
+                print(error.localizedDescription)
+                
+            }, receiveValue: { [weak self] _ in
+                guard let self = self else { return }
+                self.users.removeFirst()
+                self.users.insert(firstUser, at: 0)
+            })
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -134,7 +167,6 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel?.text = users[indexPath.row].name
-//        cell.backgroundColor = .white
         return cell
     }
 }

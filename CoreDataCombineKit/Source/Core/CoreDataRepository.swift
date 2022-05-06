@@ -103,11 +103,11 @@ public extension CoreDataRepository {
     }
     
     func update(_ entity: Entity) -> AnyPublisher<Void, Error> {
-        Deferred { [backgroundContext] in
+        Deferred { [forgroundContext] in
             Future { promise in
-                backgroundContext.perform {
+                forgroundContext.perform {
                     do {
-                        try backgroundContext.save()
+                        try forgroundContext.save()
                         promise(.success(()))
                     } catch {
                         promise(.failure(error))
@@ -120,12 +120,12 @@ public extension CoreDataRepository {
     }
     
     func delete(_ entity: Entity) -> AnyPublisher<Void, Error> {
-        Deferred { [backgroundContext] in
+        Deferred { [forgroundContext] in
             Future { promise in
-                backgroundContext.perform {
+                forgroundContext.perform {
                     do {
-                        backgroundContext.delete(entity)
-                        try backgroundContext.save()
+                        forgroundContext.delete(entity)
+                        try forgroundContext.save()
                         promise(.success(()))
                     } catch {
                         promise(.failure(error))
@@ -138,17 +138,17 @@ public extension CoreDataRepository {
     }
     
     func delete(with id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
-        Deferred { [backgroundContext] in
+        Deferred { [forgroundContext] in
             Future { promise in
-                guard let entity = try? backgroundContext.existingObject(with: id) as? Entity else {
+                guard let entity = try? forgroundContext.existingObject(with: id) as? Entity else {
                     promise(.failure(CoreDataManagerError.objectNotFound))
                     return
                 }
                 
-                backgroundContext.perform {
+                forgroundContext.perform {
                     do {
-                        backgroundContext.delete(entity)
-                        try backgroundContext.save()
+                        forgroundContext.delete(entity)
+                        try forgroundContext.save()
                         promise(.success(()))
                     } catch {
                         promise(.failure(error))
@@ -161,14 +161,14 @@ public extension CoreDataRepository {
     }
     
     func delete(with Id: String) -> AnyPublisher<Void, Error> {
-        Deferred { [backgroundContext] in
+        Deferred { [forgroundContext] in
             Future { promise in
                 
-                backgroundContext.perform {
+                forgroundContext.perform {
                     let request = Entity.fetchRequest()
                     
                     do {
-                        let results = try backgroundContext.fetch(request) as! [Entity]
+                        let results = try forgroundContext.fetch(request) as! [Entity]
                         
                         guard
                             let entity = results.first(where: {
@@ -179,8 +179,8 @@ public extension CoreDataRepository {
                             return
                         }
                         
-                        backgroundContext.delete(entity)
-                        try backgroundContext.save()
+                        forgroundContext.delete(entity)
+                        try forgroundContext.save()
                         
                         promise(.success(()))
                     } catch {
