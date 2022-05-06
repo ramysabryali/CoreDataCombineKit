@@ -245,8 +245,6 @@ sudo arch -x86_64 gem install ffi
 arch -x86_64 pod install
 ```
 
-This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombineKit` in your swift file to use the library.
-
 <br />
 
 ### Install with Swift Package Manager:
@@ -255,7 +253,14 @@ dependencies: [
     .package(url: "https://github.com/ramyaimansabry/CoreDataCombineKit.git", from: "0.0.1"))
 ]
 ```
-Declare `import CoreDataCombineKit` in your swift file to use the library.
+
+<br />
+
+### Install through Xcode's Swift Package Manager
+From the **File** - **Swift Packages** - **Add Package Dependency…** menu, search for 
+```
+CoreDataCombineKit
+```
 
 <br />
 
