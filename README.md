@@ -26,7 +26,7 @@
 ## Architecture
 All fetching requests execusting on the main thread with the main context, But insert, update and delete requests are executing on a background thread
 
-<img src="Screenshots/CoreDataCombineKitDesign.jpeg" width="200"> 
+<img src="Screenshots/CoreDataCombineKitDesign.jpeg" width="400"> 
 
     
     # Installation
