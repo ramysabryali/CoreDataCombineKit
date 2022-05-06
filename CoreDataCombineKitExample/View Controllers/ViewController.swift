@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addNewButtonAction(_ sender: UIButton) {
-        usersRepo?.add { user in
+        usersRepo?.insert { user in
             user.id = UUID()
             user.name = String.random(length: 1)
         }
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     
     @IBAction func addNew1500UserButtonAction(_ sender: UIButton) {
         for _ in 0..<1500 {
-            usersRepo?.add { user in
+            usersRepo?.insert { user in
                 user.id = UUID()
                 user.name = String.random(length: 1)
             }

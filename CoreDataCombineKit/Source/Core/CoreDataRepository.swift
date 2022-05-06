@@ -63,8 +63,8 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
-    func object(
-        _ id: NSManagedObjectID
+    func retrieve(
+        with id: NSManagedObjectID
     ) -> AnyPublisher<Entity, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
@@ -82,7 +82,7 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
-    func add(
+    func insert(
         _ body: @escaping (inout Entity) -> Void
     ) -> AnyPublisher<Entity, Error> {
         Deferred { [backgroundContext] in
@@ -137,10 +137,10 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
-    func delete(with Id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
+    func delete(with id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
-                guard let entity = try? backgroundContext.existingObject(with: Id) as? Entity else {
+                guard let entity = try? backgroundContext.existingObject(with: id) as? Entity else {
                     promise(.failure(CoreDataManagerError.objectNotFound))
                     return
                 }
