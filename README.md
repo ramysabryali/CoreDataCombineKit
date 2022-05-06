@@ -223,7 +223,7 @@ All fetching requests execusting on the main thread with the main context, But i
 ## Installation
 - Requires:
     - iOS 13.1 SDK and above
-    - Swift 5.2 (Xcode 11.4+)
+    - Swift 5.0 (Xcode 13+)
 - Dependencies:
     - *None*
 - Other notes:
@@ -240,6 +240,12 @@ and run
 ```
 pod install
 ```
+
+if you are using Macbook M1, maybe you will face an error while executing the previous command, so you can try the following commands
+```sh
+sudo arch -x86_64 gem install ffi
+arch -x86_64 pod install
+
 This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombineKit` in your swift file to use the library.
 
 <br />
