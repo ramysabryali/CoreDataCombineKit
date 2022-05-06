@@ -6,8 +6,7 @@
 <br />
 
 # Core Data Combine Kit
-
-## A light weight library for manipulating the main Core Data actions with combine compatibility.
+### A light weight library for manipulating the main Core Data actions with combine compatibility.
 
 
 <br /><br />Dependency managers<br />
