@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NKT-am-xQq">
-                                <rect key="frame" x="25" y="189.5" width="247.5" height="20.5"/>
+                                <rect key="frame" x="25" y="104.5" width="247.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Users:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ1-gI-eEM">
                                         <rect key="frame" x="0.0" y="0.0" width="111" height="20.5"/>
@@ -40,14 +40,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-th-dIf">
-                                <rect key="frame" x="25" y="602" width="364" height="235"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-th-dIf">
+                                <rect key="frame" x="25" y="622" width="364" height="215"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jet-Ff-hpf">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="35"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="sLh-ho-gf6"/>
+                                            <constraint firstAttribute="height" constant="35" id="sLh-ho-gf6"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -56,11 +56,24 @@
                                             <action selector="fetchAllButtonAction:" destination="gUB-1n-OXK" eventType="touchUpInside" id="fga-vS-Js7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etv-sU-hc9">
-                                        <rect key="frame" x="0.0" y="65" width="364" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqk-m5-1ek">
+                                        <rect key="frame" x="0.0" y="45" width="364" height="35"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="u0A-iU-yPT"/>
+                                            <constraint firstAttribute="height" constant="35" id="Xe7-j0-lHm"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Fetch All with Sorting by Name"/>
+                                        <connections>
+                                            <action selector="fetchAllWithSortButtonAction:" destination="gUB-1n-OXK" eventType="touchUpInside" id="DZx-Zz-yrt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etv-sU-hc9">
+                                        <rect key="frame" x="0.0" y="90" width="364" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="u0A-iU-yPT"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -70,10 +83,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yms-ml-E6z">
-                                        <rect key="frame" x="0.0" y="130" width="364" height="40"/>
+                                        <rect key="frame" x="0.0" y="135" width="364" height="35"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="bFJ-JA-a4n"/>
+                                            <constraint firstAttribute="height" constant="35" id="bFJ-JA-a4n"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -83,10 +96,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2B-Jq-CUQ">
-                                        <rect key="frame" x="0.0" y="195" width="364" height="40"/>
+                                        <rect key="frame" x="0.0" y="180" width="364" height="35"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Mdl-ZL-4ex"/>
+                                            <constraint firstAttribute="height" constant="35" id="Mdl-ZL-4ex"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -99,29 +112,50 @@
                                 <constraints>
                                     <constraint firstItem="V2B-Jq-CUQ" firstAttribute="leading" secondItem="L4J-th-dIf" secondAttribute="leading" id="0fY-Up-Xcx"/>
                                     <constraint firstAttribute="trailing" secondItem="jet-Ff-hpf" secondAttribute="trailing" id="0yw-Ys-Cfb"/>
+                                    <constraint firstAttribute="trailing" secondItem="sqk-m5-1ek" secondAttribute="trailing" id="9GC-Ey-Lb3"/>
                                     <constraint firstItem="etv-sU-hc9" firstAttribute="leading" secondItem="L4J-th-dIf" secondAttribute="leading" id="JRA-NR-hex"/>
                                     <constraint firstItem="yms-ml-E6z" firstAttribute="leading" secondItem="L4J-th-dIf" secondAttribute="leading" id="KsF-8X-bNH"/>
                                     <constraint firstAttribute="trailing" secondItem="V2B-Jq-CUQ" secondAttribute="trailing" id="TgG-kp-tE1"/>
                                     <constraint firstAttribute="trailing" secondItem="yms-ml-E6z" secondAttribute="trailing" id="VeN-pZ-Zbi"/>
                                     <constraint firstItem="jet-Ff-hpf" firstAttribute="leading" secondItem="L4J-th-dIf" secondAttribute="leading" id="eTf-9C-HqK"/>
+                                    <constraint firstItem="sqk-m5-1ek" firstAttribute="leading" secondItem="L4J-th-dIf" secondAttribute="leading" id="jr7-2f-zcJ"/>
                                     <constraint firstAttribute="trailing" secondItem="etv-sU-hc9" secondAttribute="trailing" id="sMe-2S-MGv"/>
                                 </constraints>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xnl-a9-P9T">
+                                <rect key="frame" x="25" y="155" width="364" height="437"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="rRg-UW-HS8">
+                                        <rect key="frame" x="0.0" y="44.5" width="364" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rRg-UW-HS8" id="jzq-pu-WbG">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cwl-Uu-0iU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cwl-Uu-0iU" firstAttribute="trailing" secondItem="xnl-a9-P9T" secondAttribute="trailing" constant="25" id="0UR-bL-bXp"/>
                             <constraint firstItem="NKT-am-xQq" firstAttribute="leading" secondItem="cwl-Uu-0iU" secondAttribute="leading" constant="25" id="0nq-nh-FVy"/>
-                            <constraint firstItem="NKT-am-xQq" firstAttribute="top" secondItem="YDh-Zv-wu9" secondAttribute="bottom" constant="100" id="FZQ-lw-hSk"/>
+                            <constraint firstItem="L4J-th-dIf" firstAttribute="top" secondItem="xnl-a9-P9T" secondAttribute="bottom" constant="30" id="8G7-mM-WtO"/>
+                            <constraint firstItem="NKT-am-xQq" firstAttribute="top" secondItem="YDh-Zv-wu9" secondAttribute="bottom" constant="15" id="FZQ-lw-hSk"/>
                             <constraint firstItem="cwl-Uu-0iU" firstAttribute="bottom" secondItem="L4J-th-dIf" secondAttribute="bottom" constant="25" id="XIO-E4-qAp"/>
                             <constraint firstItem="cwl-Uu-0iU" firstAttribute="trailing" secondItem="L4J-th-dIf" secondAttribute="trailing" constant="25" id="eYe-sn-N2t"/>
+                            <constraint firstItem="xnl-a9-P9T" firstAttribute="top" secondItem="NKT-am-xQq" secondAttribute="bottom" constant="30" id="i3Y-WJ-C5O"/>
                             <constraint firstItem="L4J-th-dIf" firstAttribute="leading" secondItem="cwl-Uu-0iU" secondAttribute="leading" constant="25" id="lPI-nD-Oky"/>
                             <constraint firstItem="YDh-Zv-wu9" firstAttribute="top" secondItem="cwl-Uu-0iU" secondAttribute="top" constant="25" id="mUY-Ui-zFZ"/>
+                            <constraint firstItem="xnl-a9-P9T" firstAttribute="leading" secondItem="cwl-Uu-0iU" secondAttribute="leading" constant="25" id="mxd-Vy-MCX"/>
                             <constraint firstItem="YDh-Zv-wu9" firstAttribute="centerX" secondItem="UxY-sY-DU3" secondAttribute="centerX" id="pJz-ZA-ja5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="usersCountLabel" destination="GhP-hJ-V6j" id="wvz-Bx-DCF"/>
+                        <outlet property="usersTableView" destination="xnl-a9-P9T" id="8TH-l2-gOs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DwA-M4-7OF" sceneMemberID="firstResponder"/>

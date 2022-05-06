@@ -10,15 +10,21 @@ import CoreDataCombineKit
 import Combine
 
 class ViewController: UIViewController {
+    @IBOutlet weak var usersTableView: UITableView!
     @IBOutlet weak var usersCountLabel: UILabel!
     
     private var cancellables = Set<AnyCancellable>()
     private var usersRepo: CoreDataRepository<User>?
+    @Published private var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUsersRepo()
+        setuoUsersTableView()
+        subscribeOnUsersChange()
     }
+    
+    // MARK: - Setup
     
     private func initializeUsersRepo() {
         guard
@@ -30,6 +36,24 @@ class ViewController: UIViewController {
         usersRepo = CoreDataRepository<User>(coreDataStorageContext: storageContext)
     }
     
+    private func setuoUsersTableView() {
+        usersTableView.dataSource = self
+        usersTableView.delegate = self
+    }
+    
+    private func subscribeOnUsersChange() {
+        $users.sink { [weak self] users in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.usersCountLabel.text = "\(users.count)"
+                self.usersTableView.reloadData()
+            }
+        }
+        .store(in: &cancellables)
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func addNewButtonAction(_ sender: UIButton) {
         usersRepo?.insert { user in
             user.id = UUID()
@@ -38,8 +62,9 @@ class ViewController: UIViewController {
         .sink { completion in
             guard case .failure(let error) = completion else { return }
             print(error.localizedDescription)
-        } receiveValue: { _ in
-            print("Saving Done")
+        } receiveValue: { [weak self] user in
+            guard let self = self else { return }
+            self.users.append(user)
         }
         .store(in: &cancellables)
     }
@@ -53,8 +78,8 @@ class ViewController: UIViewController {
             .sink { completion in
                 guard case .failure(let error) = completion else { return }
                 print(error.localizedDescription)
-            } receiveValue: { _ in
-                print("Saving Done")
+            } receiveValue: { user in
+                self.users.append(user)
             }
             .store(in: &cancellables)
         }
@@ -67,7 +92,7 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
                 
             }, receiveValue: {
-                
+                self.users.removeAll()
             })
             .store(in: &cancellables)
     }
@@ -80,7 +105,7 @@ class ViewController: UIViewController {
                 
             } receiveValue: { [weak self] users in
                 guard let self = self else { return }
-                self.usersCountLabel.text = "\(users.count)"
+                self.users = users
             }
             .store(in: &cancellables)
     }
@@ -93,11 +118,32 @@ class ViewController: UIViewController {
                 
             } receiveValue: { [weak self] users in
                 guard let self = self else { return }
-                self.usersCountLabel.text = "\(users.count)"
+                self.users = users
             }
             .store(in: &cancellables)
     }
 }
+
+// MARK: - UITableViewDataSource
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = users[indexPath.row].name
+//        cell.backgroundColor = .white
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ViewController: UITableViewDelegate {}
+
+// MARK: - Helpers
 
 fileprivate extension String {
     static func random(length: Int = 20) -> String {
