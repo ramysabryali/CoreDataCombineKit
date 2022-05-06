@@ -47,7 +47,7 @@ This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombine
 #### Install with Swift Package Manager:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/JohnEstropia/CoreStore.git", from: "0.0.1"))
+    .package(url: "https://github.com/ramyaimansabry/CoreDataCombineKit.git", from: "0.0.1"))
 ]
 ```
 Declare `import CoreDataCombineKit` in your swift file to use the library.
