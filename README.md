@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+<br />
+
 2- Or you can initialize your own CoreDataStorageContainer on the CoreDataRepo container like:
 ```swift
 import UIKit
@@ -133,6 +135,7 @@ func fetchAllUsersWithSorting() {
     }
 ```
 
+<br />
 
 Fetching an entity with id:
 
@@ -151,6 +154,7 @@ func fetchSingleUser() {
     }
 ```
 
+<br />
 
 Update an entity:
 
@@ -170,6 +174,7 @@ func updateUser() {
     }
 ```
 
+<br />
 
 Delete an entity:
 
@@ -187,6 +192,7 @@ func deleteSingleUser() {
     }
 ```
 
+<br />
 
 Delete all entities:
 
@@ -204,6 +210,7 @@ func deleteAllUsers() {
     }
 ```
 
+<br />
 
 
 ## Architecture
