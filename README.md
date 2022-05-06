@@ -75,7 +75,9 @@ class ExampleViewController: UIViewController {
 ```
 
 ## Usage
-Adding new record:
+- Suppose we have an entity called User.
+
+Adding new entity:
 
 ```swift
 func addNewUser() {
@@ -90,6 +92,111 @@ func addNewUser() {
         } receiveValue: { _ in
             print("Saving Done")
         }
+        .store(in: &cancellables)
+    }
+```
+
+Fetching all entities:
+
+```swift
+func fetchAllUsers() {
+     usersRepo.fetch()
+        .sink { completion in
+            guard case .failure(let error) = completion else { return }
+            print(error.localizedDescription)
+                
+        } receiveValue: { [weak self] users in
+            guard let self = self else { return }
+            // Do what you want
+        }
+        .store(in: &cancellables)
+    }
+```
+
+
+Fetching all entities with sort:
+
+```swift
+func fetchAllUsersWithSorting() {
+     usersRepo.fetch(sortDescriptors: [.init(keyPath: \User.name, ascending: true)])
+        .sink { completion in
+            guard case .failure(let error) = completion else { return }
+            print(error.localizedDescription)
+            
+        } receiveValue: { [weak self] users in
+            guard let self = self else { return }
+            // Do what you want
+        }
+        .store(in: &cancellables)
+    }
+```
+
+
+Fetching an entity with id:
+
+```swift
+func fetchSingleUser() {
+     usersRepo.fetchEntity(with: user.id)
+        .sink { completion in
+            guard case .failure(let error) = completion else { return }
+            print(error.localizedDescription)
+                
+        } receiveValue: { [weak self] user in
+            guard let self = self else { return }
+            // Do what you want
+        }
+        .store(in: &cancellables)
+    }
+```
+
+
+Update an entity:
+
+```swift
+func updateUser() {
+    user.name = "Updated name"
+
+    usersRepo.update(user)
+        .sink(receiveCompletion: { completion in
+            guard case .failure(let error) = completion else { return }
+             print(error.localizedDescription)
+            
+        }, receiveValue: {
+            // Do what you want
+        })
+        .store(in: &cancellables)
+    }
+```
+
+Delete an entity:
+
+```swift
+func deleteSingleUser() {
+    usersRepo.delete(user)
+        .sink(receiveCompletion: { completion in
+            guard case .failure(let error) = completion else { return }
+             print(error.localizedDescription)
+            
+        }, receiveValue: {
+            // Do what you want
+        })
+        .store(in: &cancellables)
+    }
+```
+
+
+Delete all entities:
+
+```swift
+func deleteAllUsers() {
+    usersRepo.deleteAll()
+        .sink(receiveCompletion: { completion in
+            guard case .failure(let error) = completion else { return }
+             print(error.localizedDescription)
+            
+        }, receiveValue: {
+            // Do what you want
+        })
         .store(in: &cancellables)
     }
 ```

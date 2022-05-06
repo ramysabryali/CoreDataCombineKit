@@ -63,7 +63,7 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
-    func retrieve(
+    func fetchEntity(
         with id: NSManagedObjectID
     ) -> AnyPublisher<Entity, Error> {
         Deferred { [backgroundContext] in

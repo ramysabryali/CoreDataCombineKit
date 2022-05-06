@@ -85,25 +85,25 @@ class ViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-//    @IBAction func fetchAllWithSortButtonAction(_ sender: UIButton) {
-//        usersRepo?.fetch(sortDescriptors: [.init(keyPath: \User.name, ascending: true)])
-//            .sink { completion in
-//                guard case .failure(let error) = completion else { return }
-//                print(error.localizedDescription)
-//
-//            } receiveValue: { [weak self] users in
-//                guard let self = self else { return }
-//                self.usersCountLabel.text = "\(users.count)"
-//            }
-//            .store(in: &cancellables)
-//    }
+    @IBAction func fetchAllWithSortButtonAction(_ sender: UIButton) {
+        usersRepo?.fetch(sortDescriptors: [.init(keyPath: \User.name, ascending: true)])
+            .sink { completion in
+                guard case .failure(let error) = completion else { return }
+                print(error.localizedDescription)
+                
+            } receiveValue: { [weak self] users in
+                guard let self = self else { return }
+                self.usersCountLabel.text = "\(users.count)"
+            }
+            .store(in: &cancellables)
+    }
 }
 
 fileprivate extension String {
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
-
+        
         for _ in 0..<length {
             let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
