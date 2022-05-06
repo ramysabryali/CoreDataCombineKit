@@ -23,6 +23,79 @@
 
 <br />
 
+////
+
+## Setting up
+You need two things:
+- A CoreDataStorageContext.
+- And a CoreDataRepository.
+
+1- The simplest way to initialize CoreDataCombineKit is using the CoreDataManager if you have one data model file.
+- Initialize coreDataStorageContext with your data model file name.
+- Bass the context to the CoreDataManager by calling Setup method in the AppDelegate.
+```swift
+import UIKit
+import CoreDataCombineKit
+
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let coreDataContext: CoreDataStorageContext = .init(
+            fileName: "UserManagement",
+            bundle: .main,
+            storeType: .sqLiteStoreType
+        )
+        
+        CoreDataManager.setup(coreDataStorageContext: coreDataContext)
+        return true
+    }
+}
+```
+
+2- Or you can initialize your own CoreDataStorageContainer on the CoreDataRepo container like:
+```swift
+import UIKit
+import CoreDataCombineKit
+import Combine
+
+class ExampleViewController: UIViewController {
+    private let coreDataContext: CoreDataStorageContext = .init(
+            fileName: "UserManagement",
+            bundle: .main,
+            storeType: .sqLiteStoreType
+        )
+    private lazy var usersRepo = CoreDataRepository<User>(coreDataStorageContext: coreDataContext)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+```
+
+## Usage
+Adding new record:
+
+```swift
+func addNewUser() {
+        usersRepo.insert { user in
+            user.id = UUID()
+            user.name = "Jhon"
+        }
+        .sink { completion in
+            guard case .failure(let error) = completion else { return }
+            print(error.localizedDescription)
+
+        } receiveValue: { _ in
+            print("Saving Done")
+        }
+        .store(in: &cancellables)
+    }
+```
+
+////
+
 ## Architecture
 All fetching requests execusting on the main thread with the main context, But insert, update and delete requests are executing on a background thread.
 
