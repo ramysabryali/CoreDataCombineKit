@@ -1,10 +1,13 @@
 <div align="center">
 
-# Core Data Combine Kit
 
 <img src="Screenshots/logo.png" width="80"> 
 
-A light weight library for manipulating the main Core Data actions with combine compatibility.
+<br />
+
+# Core Data Combine Kit
+
+## A light weight library for manipulating the main Core Data actions with combine compatibility.
 
 
 <br /><br />Dependency managers<br />
