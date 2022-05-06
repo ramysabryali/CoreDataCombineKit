@@ -21,8 +21,6 @@
 
 * **Swift 5.5:** iOS 13.1+ / macOS 10.15+
 
-<br />
-
 
 ## Setting up
 You need two things:
