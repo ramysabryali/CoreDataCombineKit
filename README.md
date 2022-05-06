@@ -39,6 +39,8 @@ All fetching requests execusting on the main thread with the main context, But i
     - The fetch requests executes on the main context (Main Thread).
     - Insert, Update, Delete and DeleteAll all are executing on the background context (Background Thread).
 
+------------
+
 ### Install with CocoaPods
 In your `Podfile`, add
 ```
@@ -50,6 +52,8 @@ pod install
 ```
 This installs CoreDataCombineKit as a framework. Declare `import CoreDataCombineKit` in your swift file to use the library.
 
+------------
+
 #### Install with Swift Package Manager:
 ```swift
 dependencies: [
@@ -58,6 +62,7 @@ dependencies: [
 ```
 Declare `import CoreDataCombineKit` in your swift file to use the library.
 
+------------
 
 ## Authors
 
