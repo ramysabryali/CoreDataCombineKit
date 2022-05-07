@@ -141,36 +141,6 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
-    /// Deletes an entity from the Core data
-    /// - Parameters:
-    ///   - entity: Entity
-    /// - Returns: AnyPublisher<Void, Error>
-    ///
-    func delete(_ entity: Entity) -> AnyPublisher<Void, Error> {
-        let objectId: NSManagedObjectID = entity.objectID
-        
-        Deferred { [backgroundContext] in
-            Future { promise in
-                guard let entityFromCurrentContext = try? backgroundContext.existingObject(with: objectId) as? Entity else {
-                    promise(.failure(CoreDataManagerError.objectNotFound))
-                    return
-                }
-                
-                backgroundContext.perform {
-                    do {
-                        backgroundContext.delete(entityFromCurrentContext)
-                        try backgroundContext.save()
-                        promise(.success(()))
-                    } catch {
-                        promise(.failure(error))
-                    }
-                }
-            }
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-    
     /// Deletes an entity from the Core data by the entity id
     /// - Parameters:
     ///   - with id: NSManagedObjectID

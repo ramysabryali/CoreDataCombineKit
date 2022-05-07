@@ -126,7 +126,7 @@ class ViewController: UIViewController {
     @IBAction func deleteFirstUser(_ sender: UIButton) {
         guard let firstUser: User = users.first else { return }
         
-        usersRepo?.delete(firstUser)
+        usersRepo?.delete(with: firstUser.objectID)
             .sink(receiveCompletion: { completion in
                 guard case .failure(let error) = completion else { return }
                 print(error.localizedDescription)

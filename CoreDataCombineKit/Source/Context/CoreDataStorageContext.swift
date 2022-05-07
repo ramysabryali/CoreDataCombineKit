@@ -17,8 +17,11 @@ public final class CoreDataStorageContext {
     private lazy var managedObjectModel: NSManagedObjectModel = initManagedObjectModel()
     private lazy var persistentContainer: NSPersistentContainer = initPersistentContainer()
     
-    private lazy var forgroundContext: NSManagedObjectContext = initForgroundContext()
-    private lazy var backgroundContext: NSManagedObjectContext = initBackgroundContext()
+    private lazy var forgroundContext: NSManagedObjectContext = {
+        let context = persistentContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
+        return context
+    }()
     
     
     /// This method sets the coreDataStorageContext
@@ -55,7 +58,9 @@ extension CoreDataStorageContext: CoreDataStorageContextContract {
     }
     
     public func getBackgroundContext() -> NSManagedObjectContext {
-        return backgroundContext
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        return context
     }
 }
 
@@ -93,18 +98,6 @@ private extension CoreDataStorageContext {
         }
         
         return persistentContainer
-    }
-    
-    func initForgroundContext() -> NSManagedObjectContext {
-        let context = self.persistentContainer.viewContext
-        context.automaticallyMergesChangesFromParent = true
-        return context
-    }
-    
-    func initBackgroundContext() -> NSManagedObjectContext {
-        let context = self.persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        return context
     }
 }
 
