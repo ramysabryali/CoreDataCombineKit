@@ -7,6 +7,8 @@
 
 import CoreData
 
+/// This class is container for the Core data NSManagedObjectModel, NSPersistentContainer ansNSManagedObjectContext instanses
+///
 public final class CoreDataStorageContext {
     private let fileName: String
     private let bundle: Bundle
@@ -18,6 +20,22 @@ public final class CoreDataStorageContext {
     private lazy var forgroundContext: NSManagedObjectContext = initForgroundContext()
     private lazy var backgroundContext: NSManagedObjectContext = initBackgroundContext()
     
+    
+    /// This method sets the coreDataStorageContext
+    /// - Parameters:
+    ///   - fileName: String -> the xcdatamodeld file name
+    ///   - bundle: Bundle -> the bundle for the xcdatamodeld file
+    ///   - storeType: CoreDataStoreType -> persistentStore type (inMemory or sqLite)
+     /**
+    - Example
+    ```
+     let coreDataContext: CoreDataStorageContext = .init(
+                 fileName: "UserManagement",
+                 bundle: .main,
+                 storeType: .sqLiteStoreType
+             )
+    ```
+    */
     public init(
         fileName: String,
         bundle: Bundle = .main,

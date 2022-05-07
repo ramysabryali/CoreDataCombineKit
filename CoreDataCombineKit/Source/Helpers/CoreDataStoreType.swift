@@ -7,6 +7,9 @@
 
 import CoreData
 
+/// The persistentStore type
+/// -  sqLite
+/// - inMemory
 public enum CoreDataStoreType: String {
     case sqLiteStoreType
     case inMemoryStoreType

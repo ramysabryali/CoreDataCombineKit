@@ -8,6 +8,7 @@
 import CoreData
 import Combine
 
+/// Responsable for the core data operations
 public final class CoreDataRepository<Entity: NSManagedObject> {
     private var coreDataStorageContext: CoreDataStorageContextContract?
     
@@ -39,6 +40,12 @@ private extension CoreDataRepository {
 // MARK: - Public Methods
 
 public extension CoreDataRepository {
+    /// Fetch all entities of single type from the Core data
+    /// - Parameters:
+    ///   - sortDescriptors: [NSSortDescriptor]
+    ///   - predicate: NSPredicate?
+    /// - Returns: AnyPublisher<[Entity], Error>
+    ///
     func fetch(
         sortDescriptors: [NSSortDescriptor] = [],
         predicate: NSPredicate? = nil
@@ -63,6 +70,11 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Fetch single entity by its id from the Core data
+    /// - Parameters:
+    ///   - id: NSManagedObjectID
+    /// - Returns: AnyPublisher<Entity, Error>
+    ///
     func fetchEntity(
         with id: NSManagedObjectID
     ) -> AnyPublisher<Entity, Error> {
@@ -82,6 +94,11 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Insert new entity to the Core data
+    /// - Parameters:
+    ///   - body: @escaping (inout Entity) -> Void
+    /// - Returns: AnyPublisher<Entity, Error>
+    ///
     func insert(
         _ body: @escaping (inout Entity) -> Void
     ) -> AnyPublisher<Entity, Error> {
@@ -102,6 +119,11 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Updates an entity to the Core data
+    /// - Parameters:
+    ///   - entity: Entity
+    /// - Returns: AnyPublisher<Void, Error>
+    ///
     func update(_ entity: Entity) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
@@ -119,6 +141,11 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Deletes an entity from the Core data
+    /// - Parameters:
+    ///   - entity: Entity
+    /// - Returns: AnyPublisher<Void, Error>
+    ///
     func delete(_ entity: Entity) -> AnyPublisher<Void, Error> {
         let objectId: NSManagedObjectID = entity.objectID
         
@@ -144,6 +171,11 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Deletes an entity from the Core data by the entity id
+    /// - Parameters:
+    ///   - with id: NSManagedObjectID
+    /// - Returns: AnyPublisher<Void, Error>
+    ///
     func delete(with id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
@@ -167,6 +199,9 @@ public extension CoreDataRepository {
         .eraseToAnyPublisher()
     }
     
+    /// Deletes all entities for a single type from the core data
+    /// - Returns: AnyPublisher<Void, Error>
+    ///
     func deleteAll() -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
