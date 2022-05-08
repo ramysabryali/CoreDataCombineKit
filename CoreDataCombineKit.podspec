@@ -16,6 +16,8 @@ Pod::Spec.new do |spec|
 
   spec.license      = 'MIT'
 
+  spec.ios.deployment_target = "13.1"
+
   spec.author       = { "Ramy Sabry" => "ramysabry1996@gmail.com" }
 
   spec.source       = { :git => "https://github.com/ramyaimansabry/CoreDataCombineKit.git", :tag => "#{spec.version}" }
