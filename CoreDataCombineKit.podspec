@@ -5,7 +5,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CoreDataCombineKit"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "CoreData with Combine"
   spec.description  = "A light weight library for manipulating the main Core Data actions with Combine framework compatibility."
   spec.homepage     = "https://github.com/ramyaimansabry/CoreDataCombineKit"
