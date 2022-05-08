@@ -9,7 +9,7 @@ import CoreData
 import Combine
 
 /// Responsable for the core data operations
-public final class CoreDataRepository<Entity: NSManagedObject> {
+public final class CoreDataRepository<CoreDataEntity: NSManagedObject> {
     private var coreDataStorageContext: CoreDataStorageContextContract?
     
     public init(coreDataStorageContext: CoreDataStorageContextContract) {
@@ -44,21 +44,21 @@ public extension CoreDataRepository {
     /// - Parameters:
     ///   - sortDescriptors: [NSSortDescriptor]
     ///   - predicate: NSPredicate?
-    /// - Returns: AnyPublisher<[Entity], Error>
+    /// - Returns: AnyPublisher<[CoreDataEntity], Error>
     ///
     func fetch(
         sortDescriptors: [NSSortDescriptor] = [],
         predicate: NSPredicate? = nil
-    ) -> AnyPublisher<[Entity], Error> {
+    ) -> AnyPublisher<[CoreDataEntity], Error> {
         Deferred { [forgroundContext] in
             Future { promise in
                 forgroundContext.performAndWait {
-                    let request = Entity.fetchRequest()
+                    let request = CoreDataEntity.fetchRequest()
                     request.sortDescriptors = sortDescriptors
                     request.predicate = predicate
                     
                     do {
-                        let results = try forgroundContext.fetch(request) as! [Entity]
+                        let results = try forgroundContext.fetch(request) as! [CoreDataEntity]
                         promise(.success(results))
                     } catch {
                         promise(.failure(error))
@@ -73,15 +73,15 @@ public extension CoreDataRepository {
     /// Fetch single entity by its id from the Core data
     /// - Parameters:
     ///   - id: NSManagedObjectID
-    /// - Returns: AnyPublisher<Entity, Error>
+    /// - Returns: AnyPublisher<CoreDataEntity, Error>
     ///
     func fetchEntity(
         with id: NSManagedObjectID
-    ) -> AnyPublisher<Entity, Error> {
+    ) -> AnyPublisher<CoreDataEntity, Error> {
         Deferred { [forgroundContext] in
             Future { promise in
                 forgroundContext.perform {
-                    guard let entity = try? forgroundContext.existingObject(with: id) as? Entity else {
+                    guard let entity = try? forgroundContext.existingObject(with: id) as? CoreDataEntity else {
                         promise(.failure(CoreDataManagerError.objectNotFound))
                         return
                     }
@@ -96,16 +96,16 @@ public extension CoreDataRepository {
     
     /// Insert new entity to the Core data
     /// - Parameters:
-    ///   - body: @escaping (inout Entity) -> Void
-    /// - Returns: AnyPublisher<Entity, Error>
+    ///   - body: @escaping (inout CoreDataEntity) -> Void
+    /// - Returns: AnyPublisher<CoreDataEntity, Error>
     ///
     func insert(
-        _ body: @escaping (inout Entity) -> Void
-    ) -> AnyPublisher<Entity, Error> {
+        _ body: @escaping (inout CoreDataEntity) -> Void
+    ) -> AnyPublisher<CoreDataEntity, Error> {
         Deferred { [backgroundContext] in
             Future  { promise in
                 backgroundContext.perform {
-                    var entity = Entity(context: backgroundContext)
+                    var entity = CoreDataEntity(context: backgroundContext)
                     body(&entity)
                     do {
                         try backgroundContext.save()
@@ -121,10 +121,10 @@ public extension CoreDataRepository {
     
     /// Updates an entity to the Core data
     /// - Parameters:
-    ///   - entity: Entity
+    ///   - entity: CoreDataEntity
     /// - Returns: AnyPublisher<Void, Error>
     ///
-    func update(_ entity: Entity) -> AnyPublisher<Void, Error> {
+    func update(_ entity: CoreDataEntity) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
                 backgroundContext.perform {
@@ -149,7 +149,7 @@ public extension CoreDataRepository {
     func delete(with id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
-                guard let entity = try? backgroundContext.existingObject(with: id) as? Entity else {
+                guard let entity = try? backgroundContext.existingObject(with: id) as? CoreDataEntity else {
                     promise(.failure(CoreDataManagerError.objectNotFound))
                     return
                 }
@@ -175,7 +175,7 @@ public extension CoreDataRepository {
     func deleteAll() -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
-                guard let entityName: String = Entity.entity().name else {
+                guard let entityName: String = CoreDataEntity.entity().name else {
                     promise(.failure(CoreDataManagerError.entityNameNotFound))
                     return
                 }
