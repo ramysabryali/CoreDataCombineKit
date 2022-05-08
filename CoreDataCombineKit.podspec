@@ -17,6 +17,8 @@ Pod::Spec.new do |spec|
   spec.license      = 'MIT'
 
   spec.ios.deployment_target = "13.1"
+  
+  spec.swift_versions = ["5.0"]
 
   spec.author       = { "Ramy Sabry" => "ramysabry1996@gmail.com" }
 
