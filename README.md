@@ -178,7 +178,7 @@ Delete an entity:
 
 ```swift
 func deleteSingleUser() {
-    usersRepo.delete(user)
+    usersRepo.delete(with: user.objectID)
         .sink(receiveCompletion: { completion in
             guard case .failure(let error) = completion else { return }
              print(error.localizedDescription)
