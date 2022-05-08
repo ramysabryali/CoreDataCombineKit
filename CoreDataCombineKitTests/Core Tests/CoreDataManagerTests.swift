@@ -18,35 +18,35 @@ class CoreDataManagerTests: XCTestCase {
     
     override func tearDown() {
         sut = nil
+        CoreDataManager.setup(coreDataStorageContext: nil)
         super.tearDown()
     }
     
     func testSUT_whenInitCalled_withoutCallingSetup_callingStorageContextShouldThrowError() {
         XCTAssertThrowsError(try sut.storageContext())
-//        sut = CoreDataManager.shared
-//
-//        do {
-//            // When
-//            let storageContext = try sut.storageContext()
-//
-//            // Then
-//            XCTAssertNil(storageContext)
-//
-//        } catch {
-//            XCTAssertNotNil(error)
-//        }
+        ////        sut = CoreDataManager.shared
+        ////
+        ////        do {
+        ////            // When
+        ////            let storageContext = try sut.storageContext()
+        ////
+        ////            // Then
+        ////            XCTAssertNil(storageContext)
+        ////
+        ////        } catch {
+        ////            XCTAssertNotNil(error)
+        ////        }
     }
-    
-//    func testSUT_whenInitCalled_withCallingSetup_callingStorageContextReturnsValue() {
-//        // Given
-//        let coreDataContext: CoreDataStorageContext = MockData.coreDataContext
-//
-//        // When
-//        CoreDataManager.setup(coreDataStorageContext: coreDataContext)
-//
-//        // Then
-//        XCTAssertNoThrow(try sut.storageContext())
-//    }
-    
+    //
+    func testSUT_whenInitCalled_withCallingSetup_callingStorageContextReturnsValue() {
+        // Given
+        let coreDataContext: CoreDataStorageContext = MockData.coreDataContext
+        
+        // When
+        CoreDataManager.setup(coreDataStorageContext: coreDataContext)
+        
+        // Then
+        XCTAssertNoThrow(try sut.storageContext())
+    }
 }
 

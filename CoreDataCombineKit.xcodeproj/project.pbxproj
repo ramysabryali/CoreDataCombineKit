@@ -94,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC158D30282794EA00005127 /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC6830D62824E37D00D9B932 /* MockData.swift */,
+			);
+			path = "Mock Data";
+			sourceTree = "<group>";
+		};
 		DC6830732824BFEF00D9B932 = {
 			isa = PBXGroup;
 			children = (
@@ -167,18 +175,9 @@
 				DC6830E02824E47500D9B932 /* Context Tests */,
 				DC6830DB2824E44600D9B932 /* Core Tests */,
 				DC6830E32824E4BC00D9B932 /* Data Model */,
-				DC6830C82824E2E800D9B932 /* Mock Data */,
+				DC158D30282794EA00005127 /* Mock Data */,
 			);
 			path = CoreDataCombineKitTests;
-			sourceTree = "<group>";
-		};
-		DC6830C82824E2E800D9B932 /* Mock Data */ = {
-			isa = PBXGroup;
-			children = (
-				DC6830D62824E37D00D9B932 /* MockData.swift */,
-			);
-			name = "Mock Data";
-			path = "../../../fffffffffgggggggggggggggggg/Mock Data";
 			sourceTree = "<group>";
 		};
 		DC6830DB2824E44600D9B932 /* Core Tests */ = {

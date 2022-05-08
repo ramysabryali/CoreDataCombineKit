@@ -14,12 +14,12 @@ public final class CoreDataStorageContext {
     private let bundle: Bundle
     private let storeType: CoreDataStoreType
     
-    private lazy var managedObjectModel: NSManagedObjectModel = initManagedObjectModel()
-    private lazy var persistentContainer: NSPersistentContainer = initPersistentContainer()
+    private lazy var managedObjectModel: NSManagedObjectModel? = initManagedObjectModel()
+    private lazy var persistentContainer: NSPersistentContainer? = initPersistentContainer()
     
-    private lazy var forgroundContext: NSManagedObjectContext = {
-        let context = persistentContainer.viewContext
-        context.automaticallyMergesChangesFromParent = true
+    private lazy var forgroundContext: NSManagedObjectContext? = {
+        let context = persistentContainer?.viewContext
+        context?.automaticallyMergesChangesFromParent = true
         return context
     }()
     
@@ -53,13 +53,13 @@ public final class CoreDataStorageContext {
 // MARK: - CoreDataStorageContextContract
 
 extension CoreDataStorageContext: CoreDataStorageContextContract {
-    public func getForgroundContext() -> NSManagedObjectContext {
+    public func getForgroundContext() -> NSManagedObjectContext? {
         return forgroundContext
     }
     
-    public func getBackgroundContext() -> NSManagedObjectContext {
-        let context = persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+    public func getBackgroundContext() -> NSManagedObjectContext? {
+        let context = persistentContainer?.newBackgroundContext()
+        context?.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
         return context
     }
 }
@@ -67,33 +67,37 @@ extension CoreDataStorageContext: CoreDataStorageContextContract {
 // MARK: - Private Helpers
 
 private extension CoreDataStorageContext {
-    func initManagedObjectModel() -> NSManagedObjectModel {
+    func initManagedObjectModel() -> NSManagedObjectModel? {
         guard let modelURL = FileManager.shared.getFile(
             fileName,
             withExtension: .careData,
             from: bundle
         ) else {
-            fatalError("\(fileName) not found in bundle: \(bundle)")
+            print("\(fileName) not found in bundle: \(bundle)")
+            return nil
         }
         
         guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Can't get NSManagedObjectModel from \(modelURL.absoluteString)")
+            print("Can't get NSManagedObjectModel from \(modelURL.absoluteString)")
+            return nil
         }
         
         return managedObjectModel
     }
     
-    func initPersistentContainer() -> NSPersistentContainer {
+    func initPersistentContainer() -> NSPersistentContainer? {
+        guard let managedObjectModel = managedObjectModel else { return nil }
+        
         let persistentContainer = NSPersistentContainer(
             name: fileName,
-            managedObjectModel: self.managedObjectModel
+            managedObjectModel: managedObjectModel
         )
         let description = persistentContainer.persistentStoreDescriptions.first
         description?.type = storeType.value
         
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("was unable to load store \(error)")
+                print("was unable to load store \(error)")
             }
         }
         

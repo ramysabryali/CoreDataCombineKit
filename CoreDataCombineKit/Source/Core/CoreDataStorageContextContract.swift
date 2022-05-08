@@ -9,6 +9,6 @@ import CoreData
 
 /// Represent the core data NSManagedObjectContext
 public protocol CoreDataStorageContextContract {
-    func getForgroundContext() -> NSManagedObjectContext
-    func getBackgroundContext() -> NSManagedObjectContext
+    func getForgroundContext() -> NSManagedObjectContext?
+    func getBackgroundContext() -> NSManagedObjectContext?
 }
