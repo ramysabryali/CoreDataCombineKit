@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
                    DESC
 
   spec.homepage     = "https://github.com/ramyaimansabry/CoreDataCombineKit"
-  s.license = 'MIT'
+  spec.license = 'MIT'
   spec.author             = { "Ramy Sabry" => "ramysabry1996@gmail.com" }
   spec.source       = { :git => "https://github.com/ramyaimansabry/CoreDataCombineKit", :tag => "#{spec.version}" }
   spec.source_files  = "Source", "CoreDataCombineKit/Classes/**/*.{h,m}"
