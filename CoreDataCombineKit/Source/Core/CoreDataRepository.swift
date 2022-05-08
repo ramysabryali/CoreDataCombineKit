@@ -81,12 +81,12 @@ public extension CoreDataRepository {
         Deferred { [forgroundContext] in
             Future { promise in
                 forgroundContext.perform {
-                    guard let entity = try? forgroundContext.existingObject(with: id) as? CoreDataEntity else {
+                    guard let record = try? forgroundContext.existingObject(with: id) as? CoreDataEntity else {
                         promise(.failure(CoreDataManagerError.objectNotFound))
                         return
                     }
                     
-                    promise(.success(entity))
+                    promise(.success(record))
                 }
             }
         }
@@ -149,14 +149,14 @@ public extension CoreDataRepository {
     func delete(with id: NSManagedObjectID) -> AnyPublisher<Void, Error> {
         Deferred { [backgroundContext] in
             Future { promise in
-                guard let entity = try? backgroundContext.existingObject(with: id) as? CoreDataEntity else {
+                guard let record = try? backgroundContext.existingObject(with: id) as? CoreDataEntity else {
                     promise(.failure(CoreDataManagerError.objectNotFound))
                     return
                 }
 
                 backgroundContext.perform {
                     do {
-                        backgroundContext.delete(entity)
+                        backgroundContext.delete(record)
                         try backgroundContext.save()
                         promise(.success(()))
                     } catch {
