@@ -20,6 +20,6 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/ramyaimansabry/CoreDataCombineKit.git", :tag => "#{spec.version}" }
 
-  spec.source_files  = "CoreDataCombineKit/Source/**/*.{h,m,swift}"
-  
+  spec.source_files  = "Source/**/*.{h,m,swift}"
+
 end
