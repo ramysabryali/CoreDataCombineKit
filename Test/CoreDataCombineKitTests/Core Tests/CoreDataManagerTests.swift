@@ -24,18 +24,6 @@ class CoreDataManagerTests: XCTestCase {
     
     func testSUT_whenInitCalled_withoutCallingSetup_callingStorageContextShouldThrowError() {
         XCTAssertThrowsError(try sut.storageContext())
-        ////        sut = CoreDataManager.shared
-        ////
-        ////        do {
-        ////            // When
-        ////            let storageContext = try sut.storageContext()
-        ////
-        ////            // Then
-        ////            XCTAssertNil(storageContext)
-        ////
-        ////        } catch {
-        ////            XCTAssertNotNil(error)
-        ////        }
     }
     //
     func testSUT_whenInitCalled_withCallingSetup_callingStorageContextReturnsValue() {

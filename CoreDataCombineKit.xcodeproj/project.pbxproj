@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC194605282A34CA005966ED /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC194604282A34CA005966ED /* MockData.swift */; };
 		DC68308C2824BFEF00D9B932 /* CoreDataCombineKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DC6830802824BFEF00D9B932 /* CoreDataCombineKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC6830A32824C33800D9B932 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830972824C33800D9B932 /* FileManager.swift */; };
 		DC6830A42824C33800D9B932 /* CoreDataStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830982824C33800D9B932 /* CoreDataStorageContext.swift */; };
@@ -16,7 +17,6 @@
 		DC6830A92824C33800D9B932 /* CoreDataStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830A12824C33800D9B932 /* CoreDataStoreType.swift */; };
 		DC6830AA2824C33800D9B932 /* CoreDataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830A22824C33800D9B932 /* CoreDataManagerError.swift */; };
 		DC6830C22824E2C100D9B932 /* CoreDataCombineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC68307D2824BFEF00D9B932 /* CoreDataCombineKit.framework */; };
-		DC6830D72824E37E00D9B932 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830D62824E37D00D9B932 /* MockData.swift */; };
 		DC6830DA2824E3D900D9B932 /* TestingDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6830D82824E3D900D9B932 /* TestingDataModel.xcdatamodeld */; };
 		DC6830DD2824E45700D9B932 /* CoreDataRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830DC2824E45700D9B932 /* CoreDataRepositoryTests.swift */; };
 		DC6830DF2824E46400D9B932 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6830DE2824E46400D9B932 /* CoreDataManagerTests.swift */; };
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC194604282A34CA005966ED /* MockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		DC68307D2824BFEF00D9B932 /* CoreDataCombineKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataCombineKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6830802824BFEF00D9B932 /* CoreDataCombineKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataCombineKit.h; sourceTree = "<group>"; };
 		DC6830972824C33800D9B932 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		DC6830A12824C33800D9B932 /* CoreDataStoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStoreType.swift; sourceTree = "<group>"; };
 		DC6830A22824C33800D9B932 /* CoreDataManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManagerError.swift; sourceTree = "<group>"; };
 		DC6830BE2824E2C100D9B932 /* CoreDataCombineKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataCombineKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC6830D62824E37D00D9B932 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockData.swift; path = "CoreDataCombineKitTests/Mock Data/MockData.swift"; sourceTree = SOURCE_ROOT; };
 		DC6830D92824E3D900D9B932 /* TestingDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestingDataModel.xcdatamodel; sourceTree = "<group>"; };
 		DC6830DC2824E45700D9B932 /* CoreDataRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryTests.swift; sourceTree = "<group>"; };
 		DC6830DE2824E46400D9B932 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
@@ -97,17 +97,41 @@
 		DC158D30282794EA00005127 /* Mock Data */ = {
 			isa = PBXGroup;
 			children = (
-				DC6830D62824E37D00D9B932 /* MockData.swift */,
+				DC194604282A34CA005966ED /* MockData.swift */,
 			);
 			path = "Mock Data";
+			sourceTree = "<group>";
+		};
+		DC194600282A3303005966ED /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DC68307F2824BFEF00D9B932 /* CoreDataCombineKit */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		DC194601282A3325005966ED /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				DC6830BF2824E2C100D9B932 /* CoreDataCombineKitTests */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		DC194602282A333F005966ED /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				DC6830E92824E50600D9B932 /* CoreDataCombineKitExample */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 		DC6830732824BFEF00D9B932 = {
 			isa = PBXGroup;
 			children = (
-				DC68307F2824BFEF00D9B932 /* CoreDataCombineKit */,
-				DC6830BF2824E2C100D9B932 /* CoreDataCombineKitTests */,
-				DC6830E92824E50600D9B932 /* CoreDataCombineKitExample */,
+				DC194600282A3303005966ED /* Source */,
+				DC194601282A3325005966ED /* Test */,
+				DC194602282A333F005966ED /* Example */,
 				DC68307E2824BFEF00D9B932 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -411,7 +435,7 @@
 				DC6830DD2824E45700D9B932 /* CoreDataRepositoryTests.swift in Sources */,
 				DC6830DF2824E46400D9B932 /* CoreDataManagerTests.swift in Sources */,
 				DC6830E22824E47D00D9B932 /* CoreDataStorageContextTests.swift in Sources */,
-				DC6830D72824E37E00D9B932 /* MockData.swift in Sources */,
+				DC194605282A34CA005966ED /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +709,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreDataCombineKitExample/Info.plist;
+				INFOPLIST_FILE = Example/CoreDataCombineKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -715,7 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreDataCombineKitExample/Info.plist;
+				INFOPLIST_FILE = Example/CoreDataCombineKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
