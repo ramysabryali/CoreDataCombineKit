@@ -102,12 +102,12 @@
 			path = "Mock Data";
 			sourceTree = "<group>";
 		};
-		DC194600282A3303005966ED /* Sources */ = {
+		DC194600282A3303005966ED /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DC68307F2824BFEF00D9B932 /* CoreDataCombineKit */,
+				DC68307F2824BFEF00D9B932 /* CoreDataCombineKitPackage */,
 			);
-			path = Sources;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		DC194601282A3325005966ED /* Tests */ = {
@@ -129,7 +129,7 @@
 		DC6830732824BFEF00D9B932 = {
 			isa = PBXGroup;
 			children = (
-				DC194600282A3303005966ED /* Sources */,
+				DC194600282A3303005966ED /* Source */,
 				DC194601282A3325005966ED /* Tests */,
 				DC194602282A333F005966ED /* Example */,
 				DC68307E2824BFEF00D9B932 /* Products */,
@@ -146,13 +146,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DC68307F2824BFEF00D9B932 /* CoreDataCombineKit */ = {
+		DC68307F2824BFEF00D9B932 /* CoreDataCombineKitPackage */ = {
 			isa = PBXGroup;
 			children = (
 				DC6830952824C33800D9B932 /* Source */,
 				DC6830802824BFEF00D9B932 /* CoreDataCombineKit.h */,
 			);
-			path = CoreDataCombineKit;
+			path = CoreDataCombineKitPackage;
 			sourceTree = "<group>";
 		};
 		DC6830952824C33800D9B932 /* Source */ = {
