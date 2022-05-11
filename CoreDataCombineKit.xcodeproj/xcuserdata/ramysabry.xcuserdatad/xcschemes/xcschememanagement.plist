@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CoreDataCombineKit-Package.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>CoreDataCombineKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>CoreDataCombineKitAppExample.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>CoreDataCombineKitExample.xcscheme_^#shared#^_</key>
 		<dict>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>DC6830842824BFEF00D9B932</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCABB42B282A391200F6A6BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCABB474282A3A4100F6A6BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
