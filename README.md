@@ -247,23 +247,6 @@ arch -x86_64 pod install
 
 <br />
 
-### Install with Swift Package Manager:
-```swift
-dependencies: [
-    .package(url: "https://github.com/ramyaimansabry/CoreDataCombineKit.git", from: "0.0.1"))
-]
-```
-
-<br />
-
-### Install through Xcode's Swift Package Manager
-From the **File** - **Swift Packages** - **Add Package Dependency…** menu, search for 
-```
-CoreDataCombineKit
-```
-
-<br />
-
 ## Authors
 
 - [Ramy Sabry](https://www.linkedin.com/in/ramy-aiman-sabry-153770117/)
